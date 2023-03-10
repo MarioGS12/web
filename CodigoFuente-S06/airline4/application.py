@@ -54,6 +54,5 @@ def flight(flight_id):
         return render_template("error.html", message="No such flight.")
 
     # Get all passengers.
-    print(flight)
     passengers = flight.passengers
     return render_template("flight.html", flight=flight, passengers=passengers)
