@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Vote</title>
+    </head>
+    <body>
+        <div>
+            <h3 id="question-name">{{question}}</h3>
+            <div>Yes Votes: <span id="yes">{{ votes["yes"] }}</span></div>
+            <div>No Votes: <span id="no">{{ votes["no"] }}</span></div>
+            <div>Maybe Votes: <span id="maybe">{{ votes["maybe"] }}<span></div>
+            <hr>
+            <button class="options" data-vote="yes">Yes</button>
+            <button class="options" data-vote="no">No</button>
+            <button class="options" data-vote="maybe">Maybe</button>
+        </div>
+        <div class="contenedor-preguntas">
+            <h3>Preguntas (seleccione una para votar)</h3>
+            <ul class="lista-preguntas">
+                {% for pregunta in preguntas %}
+                <li>{{pregunta}}</li>
+                
+                {% endfor %}
+            </ul>
+            <input type="text" name="pregunta" id="pregunta">
+            <button onclick="agregarPregunta()" >Agregar pregunta</button>
+        </div>
+    </body>
+</html>

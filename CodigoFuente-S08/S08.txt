@@ -1,0 +1,64 @@
+Funciones de Orden Superior
+- diapositiva 
+- abrir el ejemplo de tasks0
+	es una lista de quehaceres, lleva un registro de tareas 
+	explicar ejemplo
+	-el return false es para anular el envio del formulario
+	y no recargar la pagina por la falta de respuesta
+
+- demostrar que acepta vacio
+
+- abrir el ejemplo de tasks1
+	evita que acepte campo vacio
+- demostrar que puede aceptar campo vacio si se borra
+
+- abrir el ejemplo de tasks2
+	demostrar la propiedad length sirve para devolver 
+	el tamaño de una cadena
+
+Otra característica de Javascript es 
+la capacidad de esperar cierta cantidad de tiempo
+
+- abrir el ejemplo de interval
+	
+demostrar que al cerrar se píerde la informacion
+
+- mostrar diapositiva del localstorage
+
+- abrir el ejemplo de storage
+	localstorage de cada dominio se almacena de forma diferente
+	de esa forma evita conflito con los nombre
+
+- diapositiva ajax
+	es una tecnologia que podemos usar para obtener mas informacion
+	del servidor sin necesidad de recargar completamente la pagina 
+	nuevamente. 
+
+- mostrar el ejemplo currency
+	demostrar que usando ajax no hace faltas recargar toda la pagina
+	y solo muestra la informacion de las moneda
+
+	XMLHttpRequest es un objeto que permite hacer una petición AJAX.
+	request.open es cuando se inicia la peticion, especificando la ruta y el metodo.
+	request.onload es cuando la petincion termine de completar 
+	FormData el cual maneja la informacion como un formulario Clave/valor
+
+- Socket.io
+
+	El modelo de petición-respuesta, el cual ha sido la base de cómo las peticiones HTTP 
+	y las interacciones de cliente-servidor, es muy útil siempre y cuando los datos que sean 
+	transferidos lo hagan a través de una petición. Pero, con comunicación “full duplex”,
+	mejor conocida como comunicación en tiempo real, no hay necesidad (o no debería haberla) 
+	de recargar una página y hacer una nueva petición en caso de, por ejemplo, ver si ha llegado 
+	un nuevo mensaje a una página de chats. Los websockets son un protocolo que permiten este tipo 
+	de comunicacion, y Socket.IO es una libreria de Javascript que soporta este protocolo.
+
+- mostrar ejemplo del voto0
+
+	forEach es un método de las arrays de JavaScript que se utiliza para iterar sobre los elementos de un array
+	dataset permite acceder a todos los atributos
+
+demostrar que no se guardan los datos
+
+- mostrar ejemplo voto1
+
