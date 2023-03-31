@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='room.js') }}"></script>
+    <title>Room</title>
+</head>
+<body>
+    <ul id="chatroom">
+    </ul>
+    <form  id="room01" method="post">
+        <input id="mensaje-room" name="chat" placeholder="Chat Room 01">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <form action="/" method="post">
+        <input type="submit" value="General">
+    </form>
+
+</body>
+</html>

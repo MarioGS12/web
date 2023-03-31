@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+    {% block main %}
+    <ul id="chat">
+    </ul>
+    <form  id="chat01" method="post">
+        <input id="mensaje" name="chat" placeholder="Chat General">
+        <input type="submit" value="Enviar">
+    </form>
+
+    <form  action="/room" method="post">
+        <input type="submit" value="Sala01">
+    </form>
+    <script src="{{ url_for('static', filename='general.js') }}"></script>
+    {% endblock %}
