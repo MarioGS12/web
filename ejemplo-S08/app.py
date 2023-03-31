@@ -29,16 +29,6 @@ def general(data):
     emit("general respuesta", {"chat":chat}, broadcast=True)
 
 
-@socketio.on('join')
-def on_join(data):
-    room = data['room']
-    join_room(room)
-    emit(' has entered the room.', to=room)
-
-
-
-
-
 @socketio.on("sala01")
 def room(data):
     chat = data["chat"]
