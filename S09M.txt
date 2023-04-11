@@ -1,0 +1,73 @@
+-Las aplicaciones de un sola página toman contenido que normalmente
+ estaría en varias páginas distintas (o rutas) y los combina en una
+ sola página que extrae información nueva del servidor siempre que 
+ sea necesario (a través de métodos como AJAX).
+
+-ejemplo multipage
+ explicar las rutas que cambian porque renderizan cada html
+ explicar el layout.html
+
+-ejemplo singlepage0
+ mostrar que los href estan vacios
+ la ventaja es que no es necesario recergar la pagina
+ la url no cambia
+
+-como poder cambiar la url sin necesidad de recargar la pagina
+
+-diapositiva Interfaz de historial de HTML5
+ es una caracteristica de html5 que nos permite manipular el
+ historial del navegador y actualizar la URL para reglajar
+ urls que podria querer crear.
+ 
+ la manera que fuciona es que podemos subir los estados url en 
+ el historia
+
+
+-ejemplo singlepage1
+
+ -document.title es solo una propiedad estética que está configurada
+  para reflejar la página actual.
+ -En la función history.pushState() 
+ -el primer argumento es cualquier dato que deba asociarse con el push, 
+ -el segundo argumento es el título de la página que se está subiendo, 
+  y el tercer argumento es la URL que se está subiendo.
+
+
+-diapositiva explicar que no funciona el retroceder 
+-diapositiva 6
+
+ onpopstate = que nos permite recuperar la copia del objeto
+	      del historial
+
+-ejemplo singlepage2
+ history.pushState(), se almacena informacion que es importante
+  window.onpopstate un evento cuando el usuario retrocede 
+  el argumento e tiene un propiedad state que contiene todos los datos
+  que fueron subidos con ese estado
+ 
+
+
+-windows diapositiva
+
+Las variables window y document, que se han visto en los ejemplos anteriores, son solo ejemplos de objetos JavaScript en los que se pueden realizar operaciones y que tienen propiedades a las que se puede acceder. En particular, contienen información sobre su tamaño y posición.
+window.innerWidth : ancho de ventana
+window.innerHeight : alto de ventana
+document.body.offsetHeight : la altura entera del documento del cuerpo HTML, de la cual la altura de la ventana es solo una pequeña porción
+window.scrollY : qué tan abajo se ha desplazado la página (en píxeles)
+
+
+preguntar:
+
+como se que el usuario se ha desplazado hasta el final de la pagina?
+
+R: innerheight + scrolly = offsetheight
+
+- ejemplo scroll.html 
+  demostrar como funciona
+  explicar que se podria agregar mas informacion como twitter
+  es mejor para el redimiento
+  cambia de color al final
+- ejemplo post0
+  como agregar infor como en twitter
+- ejemplo post1
+  ocultar informacion
