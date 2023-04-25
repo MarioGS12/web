@@ -1,0 +1,154 @@
+- diapositiva migraciones
+
+Cuando construyes una aplicación web, 
+muy raramente todas las tablas estarán definidas todas 
+las columnas correctamente desde el inicio. Usualmente, 
+las tablas se van construyendo a medida que la aplicación 
+va creciendo, y la base de datos se vaya modificando. 
+Sería tedioso cambiar ambos, el código del modelo Django 
+y ejecutar el comando SQL para modificar la base de datos.
+
+
+La solución de Django a este problema son las ‘migraciones’.
+ Django automáticamente detecta y cambia al models.py 
+y automáticamente genera el código SQL necesario para 
+realizar los cambios necesarios.
+
+
+en airline -> settings.py
+
+es necesario modifica la lista de aplicaciones y agregar la que 
+hemos creador
+
+flights.apps.FlightsConfig
+
+vamos a crear la tabla vuelo
+
+---python manage.py makemigrations
+
+abrir el archivo que ha creado la migracion y observa que contiene
+el modelo
+
+Django agrega id de forma automatica
+
+
+manage.py sqlmigrate migracionespecifica
+----manage.py sqlmigrate flights 0001
+
+nos muestra el equivalente en sql de esa migracion
+
+para aplicar esta migracion final en la se utiliza
+
+---python manage.py migrate
+
+
+
+Django Shell
+
+Django provee una shell, similar al intérprete Python, 
+que permite una modificación directa de la base de datos.
+
+--- python manage.py shell.
+
+from flights.models import Flight
+
+f= Flight(origen="Nueva york", destino="londres",duracion=500)
+f.save()
+
+Flight.objects.all()
+
+otro ejemplo
+
+g = Flight.objects.First()
+
+g
+
+g.origin
+g.id
+g.delete()
+
+tablabas relacionadas
+
+class Airport(models.Model):
+    code=models.CharField(max_length=3)
+    city=models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.code} - {self.city}"
+
+class flight(models.Model):
+    origin=models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="departures")
+    destination=models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="arrivals")
+    duration=models.IntegerField()
+
+    def __str__(self):
+        return f"{self.id} - From {self.origin} to {self.destination}"
+
+
+en django shell
+
+--j=Airport(code="jfk",city="new york city")
+--j.save()
+--l=Airport(code="lhr",city="london")
+--l.save()
+
+--f= Flight(origin="Nueva york", destino="londres",duracion=500)
+--f.save()
+
+--f.origin
+
+--f.origin.city
+--f.origin.code
+
+para ver toda la relacion
+--j.departures.all()
+
+
+Renderizando Plantillas
+
+ return render(request, "flights/index.html")
+
+donde "flights/index.html" debe estar en una carpeta llamada "templates"
+
+--python manage.py runserver
+
+para mostrar la tabla en el html
+
+from .models import Flight
+
+def index(request):
+    context = {
+        "flights": Flight.objects.all()
+    }
+    return render(request, "flights/index.html",context)
+
+--python manage.py runserver
+admin
+
+ Django que hace todo mucho más fácil para agregar o modificar 
+datos ya existentes en una página web. Observa que esta es una 
+tarea que debería de requerir un buen trozo de código en Flask.
+ Esto es quizás una de las funcionalidades más poderosas de Django,
+ especialmente cuando se trata de lidiar con la manipulación de 
+datos.
+
+en python admin.py
+
+from .models import Airport, Flight
+
+admin.site.register(Airport)
+admin.site.register(flight, FlightAdmin)
+
+
+pero para realizar estas modificaciones es necesario tener un usuario
+admin por lo tanto lo vamos a crear
+
+--python manage.py createsuperuser
+
+despues agregar la ruta
+
+En Airlines/url.py
+
+ path('admin/', admin.site.urls),
+
+--python manage.py runserver
