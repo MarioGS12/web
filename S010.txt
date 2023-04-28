@@ -152,3 +152,52 @@ En Airlines/url.py
  path('admin/', admin.site.urls),
 
 --python manage.py runserver
+
+
+¡¡¡Agregando Más Rutas
+
+rutas dinamicas crear una pagina que muestre info del vuelo
+
+
+---url.py
+
+urlpatterns =[
+    path("",views.index, name="index"),
+    path("<int:flight_id>", views.flights, name="flight")
+]
+
+--views.py
+
+from django.http.response import HttpResponse, Http404
+
+def flights(request, flight_id):
+    try:
+        f=flight.objects.get(pk=flight_id)
+    except flight.DoesNotExist:
+        raise Http404("Flight does not exist")
+    
+     context={
+            "flight":f
+        }
+     return render(request, "flights/flight.html", context)
+
+
+--los nombre en las rutas es para vincular ese nombre con la ruta
+--y de esta forma poner el // en el html
+
+html de informacion del vuelo
+ <a href="{% url 'index' %}">volver al home</a>
+
+html en el home
+ <a href="{% url 'flight' flight.id %}">
+ Flight #{{ flight.id }}: {{ flight.origin }} to {{ flight.destination }}
+  </a>
+
+
+---la herencia del html
+{% extends "flights/base.html" %}
+{% block tittle %}
+{% endblock %}
+
+
+
