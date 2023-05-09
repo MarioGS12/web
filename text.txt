@@ -1,0 +1,45 @@
+airline1
+
+explicar
+
+TestCase es una extensión para el framework unittest que hace más fácil ciertas pruebas para cosas específicas en aplicaciones Django.
+
+ModelsTestCase es una clase que, como antes, contiene funciones para cada prueba.
+
+La función setUp se ejecuta realmente antes de cada una de las pruebas, para garantizar que las pruebas sean independientes.
+
+--mostrar la validacion en models.py
+
+primera funcion las salidas del aeropuerto (departures) mostrar models
+
+
+airline 2 prueba cosas que enviamos a la plantilla
+
+Client simula un cliente web que, por propósitos de prueba, puede hacer solicitudes y obtener respuestas de un web server}
+
+c.get(“/”) simplemente usa un objeto Client para hacer un request GET a una ruta y retornar la respuesta
+
+
+Selenium
+
+Para probar comportamiento de navegadores, incluyendo código 
+JavaScript, se necesita una herramienta de pruebas para navegador 
+por separado. Una herramienta como tal es Selenium, la cual usa 
+un web driver que permite código Python para que programáticamente 
+pretenda ser un usuario interactuando con la página web. Aquí está 
+un ejemplo de página web para pruebas que tiene un contador que 
+puede ser incrementado o decrementado con dos botones:
+
+-python
+-from selenium import webdriver
+-from test import file_uri
+-uri= file_uri(¨counter.html¨)
+-driver = webdriver.Chrome()
+-driver.get(uri)
+-push= driver.find_element_by_id("increase")
+-push.click()
+
+
+despues probar el codigo
+
+tests.py
